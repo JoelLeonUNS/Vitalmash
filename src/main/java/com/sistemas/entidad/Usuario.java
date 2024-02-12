@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 
 public class Usuario {
 	@Id @GeneratedValue (strategy = GenerationType. IDENTITY) 
-	private Long id_usuario;
+	private Long id;
 	@Column(nullable = false)
 	@NotBlank(message = "El nombre debe tener al menos una letra") 
 	private String nombreUsuario;

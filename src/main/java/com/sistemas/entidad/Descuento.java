@@ -25,7 +25,7 @@ import lombok.Data;
 public class Descuento {
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY) //establece que la clave primaria sea tipo identidad
-	private Long id_descuento;
+	private Long id;
 	
 	@Column(length = 8, nullable = false, unique = true)
 	@NotBlank(message = "El código no puede estar en blanco")

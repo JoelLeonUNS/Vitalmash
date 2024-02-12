@@ -12,22 +12,17 @@
 			<input type="hidden" id="inputID" placeholder="Ingrese ID" th:field="*{id}" th:value="*{id}" />
 
 		</div>
-		<div>
-			<label for="inputProductoEla">Producto Elaborado:</label>
-			<select id="inputProductoEla" th:field="*{productoElaborado}" th : value>
-				<option value="Producto 1">Producto 1</option>
-				<option value="Producto 2">Producto 2</option>
-				<option value="Producto 3">Producto 3</option>
-			</select>
-		</div>
+		
 		<div>
 			<label for="selectProductoEla">Producto Elaborado :</label>
 			<Select id="selectProductoEla" name="productoElaborado.id">
 				<option value=""> -- Seleccione Producto --</option>
 				<option th:each="oProductoElaborado : ${listaProductos}" th:value="${oProductoElaborado. id}"
 					th:text="$ {oProductoElaborado.producto} + ', ' + $ {oProductoElaborado. presentacion}" th:
-					selected="$ { oProductoElaborado. id] ==* {oProductoElaborado. id}" </Select>
+					selected="$ { oProductoElaborado. id] ==* {oProductoElaborado. id}" />
+			</Select>
 		</div>
+
 		<div>
 			<label for="inputFechaIng">Fecha Ingreso :</label>
 			<input type="date" id="inputFechaIng" th: field="*{ fecha_inicio}" th : value="*{ fecha_inicio}" />
@@ -40,8 +35,10 @@
 				value="*{ fecha_vencimiento}" />
 
 		</div>
-		<div th:replace="~{_frag/Inputs :: iHtml (number,
-'Canridad:', 'Ingrese Cantidad', cantidad_elaborada) }"></div>
+		
+		<div th:replace="~{_frag/Inputs :: iHtml (number,'Cantidad:', 'Ingrese Cantidad', cantidad_elaborada) }"/>
+
+		</div>
 		<div>
 			<br>
 			<button type="submit">Guardar</button>

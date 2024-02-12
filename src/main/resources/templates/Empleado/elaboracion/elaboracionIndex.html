@@ -1,0 +1,58 @@
+<html>
+<head>
+	<title>Vitalmash Tienda Virtual</title>
+</head>
+
+<body>
+	<h1>Listado de Elaboraciones</h1>
+	<div>
+		<ul>
+			<li><a th:href="@{/elaboracion/nuevo}">Agregar Elaboracion</a></li>
+			<li><a th:href="@{/}">Cerrar</a></li>
+		</ul>
+	</div>
+	<div>
+		<table id="listadoElaboracion" border="1">
+			<thead>
+				<tr>
+					<tr>Producto Elaborado</tr>
+					<td>Fecha Elaboracion</td>
+					<td>Fecha Vencimiento</td>
+					<td>Cantidad</td>
+					<td>Editar</td> 
+					<td>Eliminar</td> 
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="elaboracion : ${listaelaboraciones}">
+					<td th:text="${elaboracionDetalleID.productoElaborado}">
+						Producto Elaborado
+						</td>
+					<td th:text="${#calendars.format(elaboracion.fecha_inicio, 'dd/MM/yyyy')}">
+						Fecha Elaboracion
+					</td>
+					<td th:text="${#calendars.format(elaboracion.fecha_vencimiento, 'dd/MM/yyyy')}">
+						Fecha Vencimiento
+					</td>
+					<td th:text="${elaboracionDetalle.cantidad_elaborada}">Cantidad</td>
+					<td>
+						<a th:href="@{/elaboracion/editar/{id}(id=${elaboracion.id})}">
+							Editar</a>
+					</td>
+					<td>
+						<a th:href="@{/elaboracion/eliminar/{id}(id=${elaboracion.id})}">
+							Eliminar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<ul>
+			<li><a th:href="@{/elaboracion/nuevo}">Agregar elaboracion</a></li>
+			<li><a th:href="@{/}">Cerrar</a></li>
+		</ul>
+	</div>
+</body>
+
+</html>

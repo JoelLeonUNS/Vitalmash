@@ -1,51 +1,51 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 
 <head>
-	<title>Vitalmash Tienda Virtual</title>
+    <title>Vitalmash Tienda Virtual</title>
 </head>
 
 <body>
-	<h2>Elaboracion de Productos</h2>
-	<form th:object="${docente}" th: action="@{/docente/guardar}" th:method="post">
-		<div>
-			<label hidden="true" for="inputID">ID :</label>
-			<input type="hidden" id="inputID" placeholder="Ingrese ID" th:field="*{id}" th:value="*{id}" />
+    <h2>Elaboracion de Productos</h2>
 
-		</div>
-		
-		<div>
-			<label for="selectProductoEla">Producto Elaborado :</label>
-			<Select id="selectProductoEla" name="productoElaborado.id">
-				<option value=""> -- Seleccione Producto --</option>
-				<option th:each="oProductoElaborado : ${listaProductos}" th:value="${oProductoElaborado. id}"
-					th:text="$ {oProductoElaborado.producto} + ', ' + $ {oProductoElaborado. presentacion}" th:
-					selected="$ { oProductoElaborado. id] ==* {oProductoElaborado. id}" />
-			</Select>
+    <form th:object="${elaboracion}" th:action="@{/elaboracion/guardar}" th:method="post">
+        <!-- Campo ID -->
+        <div th:replace="~{_frag/Inputs :: iHtml (hidden,'ID:', '', id)}">
+			
 		</div>
 
-		<div>
-			<label for="inputFechaIng">Fecha Ingreso :</label>
-			<input type="date" id="inputFechaIng" th: field="*{ fecha_inicio}" th : value="*{ fecha_inicio}" />
 
+        <div th:replace="~{_frag/Inputs :: iHtml (select, 'Producto Elaborado:', '', productoElaborado)}">
+            <Select id="selectProductoEla" name="productoElaborado.id">
+                <option value=""> -- Seleccione Producto --</option>
+                <option th:each="oProductoElaborado : ${listaProductos}" th:value="${oProductoElaborado.id}"
+                    th:text="${oProductoElaborado.producto + ', ' + oProductoElaborado.presentacion}"
+                    th:selected="${oProductoElaborado.id == elaboracion.productoElaborado.id}">
+
+                </option>
+            </Select>
+        </div>
+
+
+        <div th:replace="~{_frag/Inputs :: iHtml (date,'Fecha Ingreso:', '', fecha_inicio)}">
+			
 		</div>
 
-		<div>
-			<label for="inputFechaVen">Fecha Vencimiento :</label>
-			<input type="date" id="inputFechaVen" th: field="*{ fecha_vencimiento}" th :
-				value="*{ fecha_vencimiento}" />
-
-		</div>
-		
-		<div th:replace="~{_frag/Inputs :: iHtml (number,'Cantidad:', 'Ingrese Cantidad', cantidad_elaborada) }"/>
-
-		</div>
-		<div>
-			<br>
-			<button type="submit">Guardar</button>
-			<a th:href="@{/elaboracion/index}" role="button">Cancelar</a>
+ 
+        <div th:replace="~{_frag/Inputs :: iHtml (date, 'Fecha Vencimiento:', '', fecha_vencimiento)}">
+			
 		</div>
 
-	</form>
+  
+        <div th:replace="~{_frag/Inputs :: iHtml (number, 'Cantidad:', 'Ingrese Cantidad', cantidad_elaborada)}">
+        </div>
+
+
+        <div>
+            <br>
+            <button type="submit">Guardar</button>
+            <a th:href="@{/elaboracion/index}" role="button">Cancelar</a>
+        </div>
+    </form>
 </body>
 
 </html>

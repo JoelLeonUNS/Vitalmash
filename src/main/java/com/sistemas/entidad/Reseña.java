@@ -30,13 +30,13 @@ public class Reseña {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Id
+	//@Id
 	@NotNull
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "id", nullable = false, foreignKey = @ForeignKey(name = "fk_productos_reseñas"))
 	private Producto producto;
 	
-	@Id
+	//@Id
 	@NotNull
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "id", nullable = false, foreignKey = @ForeignKey(name = "fk_clientes_reseñas"))

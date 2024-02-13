@@ -22,8 +22,7 @@ public class PedidoDetalle {
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private Long id_numero;
 	
-	@Id
-	@GeneratedValue (strategy=GenerationType.IDENTITY)
+	//@Id
 	@ManyToOne
     @JoinColumn(name = "id_pedido", referencedColumnName = "id", 
     nullable = false, foreignKey = @ForeignKey(name = "fk_pedidos_pedidosDetalle"))

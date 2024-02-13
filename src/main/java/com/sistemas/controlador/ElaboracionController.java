@@ -15,4 +15,9 @@ public class ElaboracionController {
 	public String verForm() {
 		return "Empleado/elaboracion/elaboracionForm";
 	}
+	
+	@GetMapping("/elaboracion/nuevo")
+	public String agregarElaboracion() {
+		return "Empleado/elaboracion/elaboracionForm";
+	}
 }

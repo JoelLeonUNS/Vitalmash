@@ -1,0 +1,14 @@
+<html>
+	
+	<body>
+		<h2>Pedidos</h2>
+		<form th:object="${pedido}" th:action="@{pedido/guardar}" method="post">
+			<div>
+				<label for="selectPedido">Pedido:</label>
+				<Select id="selectPedido" name="pedido.id">
+					<option value="">--Seleccione producto--</option>
+				</Select>
+			</div>
+		</form>
+	</body>
+</html>

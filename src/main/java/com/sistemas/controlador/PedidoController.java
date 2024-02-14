@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sistemas.entidad.Pedido;
 import com.sistemas.servicio.PedidoService;
@@ -15,11 +16,12 @@ import com.sistemas.servicio.PedidoService;
 import jakarta.validation.Valid;
 
 @Controller
+@RequestMapping("/pedido")
 public class PedidoController {
 	
 	@Autowired private PedidoService pedidoService;
 	
-	@GetMapping({"index", ""})
+	@GetMapping({"/index", ""})
 	public String indice(Model model) {
 		model.addAttribute("listaPedido", pedidoService.listarTodos());
 		return "cliente/pedido/pedido";

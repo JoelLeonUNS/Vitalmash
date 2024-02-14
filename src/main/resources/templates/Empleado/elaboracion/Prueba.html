@@ -24,9 +24,14 @@
         <div>
 			<label for="cantidad">Cantidad</label>
 			<div>
-				<input type="text" id="cantidad" th:field="*{stock}">
+				<input type="number" id="cantidad" name="cantidad">
 			</div>
 		</div>
+		<div>
+            <br>
+            <button type="submit">Guardar</button>
+            <a th:href="@{/producto/index}" role="button">Cancelar</a>
+        </div>
     </form>
 </body>
 

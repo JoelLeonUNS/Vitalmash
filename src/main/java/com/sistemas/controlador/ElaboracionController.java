@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.sistemas.entidad.Elaboracion;
 import com.sistemas.entidad.ElaboracionDetalle;
 import com.sistemas.entidad.ElaboracionDetalleID;
+import com.sistemas.entidad.Producto;
 import com.sistemas.entidad.ProductoElaborado;
 import com.sistemas.servicio.ElaboracionDetalleServiceImpl;
 import com.sistemas.servicio.ElaboracionServiceImpl;
@@ -46,21 +47,22 @@ public class ElaboracionController {
 	
 	
 	@GetMapping("/actualizar-stock") //Dirige al formulario vacio
-	public String actualizarStock(Model modelo) {
+	public String actualizarStock(Model modelo) {	
 		modelo.addAttribute("productoElaborado", new ProductoElaborado());
 		modelo.addAttribute("listaProductos", productoElaboradoService.listarTodos());
-		return "Empleado/elaboracion/actualizar-stock";
+		return "Empleado/elaboracion/prueba";
 	}
 	
 	@PostMapping("/guardar")
-	public String guardar(@RequestParam Long id, 
-			@RequestParam int cantidad,
-			@RequestParam ProductoElaborado producto,
+	public String guardar(@RequestParam("productoElaborado.id") Long id, 
+			@RequestParam("cantidad") Integer cantidad,
 			Model modelo) {
 		
-		//productoElaboradoService.buscar(producto.getId());
+		ProductoElaborado prodElaborado = productoElaboradoService.buscar(id);
+		prodElaborado.setStock(prodElaborado.getStock()+cantidad);
+		productoElaboradoService.actualizar(prodElaborado);
 		
-		return "Empleado/elaboracion/elaboracionIndex";
+		return "index";
 	}
 	
 }

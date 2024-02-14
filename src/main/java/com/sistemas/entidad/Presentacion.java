@@ -40,4 +40,38 @@ public class Presentacion {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name ="idMedida", referencedColumnName = "Id", nullable = false, foreignKey = @ForeignKey(name = "fk_medida_presentacion"))
 	private Medida medida;
+
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public Double getPeso() {
+		return peso;
+	}
+
+	public void setPeso(Double peso) {
+		this.peso = peso;
+	}
+
+	public Medida getMedida() {
+		return medida;
+	}
+
+	public void setMedida(Medida medida) {
+		this.medida = medida;
+	}
+	
+	
 }

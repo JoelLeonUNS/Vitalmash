@@ -43,6 +43,16 @@ public class ProductoElaborado {
     @DecimalMin(value = "0", message = "El stock no puede ser menor que 0")
     @Column(nullable = false)
     private Integer stock;
+
+	public Integer getStock() {
+		return stock;
+	}
+
+	public void setStock(Integer stock) {
+		this.stock = stock;
+	}
+    
+    
 }
 
 

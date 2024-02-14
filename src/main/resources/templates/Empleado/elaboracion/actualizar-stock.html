@@ -7,7 +7,7 @@
 <body>
     <h2>Actualizar Stock</h2>
 
-    <form th:object="${productoElaborado}" th:action="@{/producto/actualizar-stock}" th:method="post">
+    <form th:object="${productoElaborado}" th:action="@{/producto/guardar}" th:method="post">
         <!-- Campo ID -->
         <div th:replace="~{_frag/Inputs :: iHtml (hidden,'ID:', '', id)}">
 			
@@ -19,7 +19,7 @@
                 <option value=""> -- Seleccione Producto --</option>
                 <option th:each="oProductoElaborado : ${listaProductos}" th:value="${oProductoElaborado.id}"
                     th:text="${oProductoElaborado.producto.nombre} + ', ' + ${oProductoElaborado.presentacion.nombre}"
-                    th:selected="${oProductoElaborado.id} == *{productoElaborado.id}">
+                    th:selected="${oProductoElaborado.id == productoElaborado.id}">
 
                 </option>
             </Select>

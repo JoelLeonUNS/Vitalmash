@@ -47,7 +47,7 @@ public class ElaboracionController {
 	
 	@GetMapping("/actualizar-stock") //Dirige al formulario vacio
 	public String actualizarStock(Model modelo) {
-		modelo.addAttribute("producto", new ProductoElaborado());
+		modelo.addAttribute("productoElaborado", new ProductoElaborado());
 		modelo.addAttribute("listaProductos", productoElaboradoService.listarTodos());
 		return "Empleado/elaboracion/actualizar-stock";
 	}

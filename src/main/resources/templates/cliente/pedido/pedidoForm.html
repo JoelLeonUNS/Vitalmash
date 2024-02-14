@@ -1,14 +1,30 @@
 <html>
 	
 	<body>
-		<h2>Pedidos</h2>
+		<h2>Datos del Pedido</h2>
+		
 		<form th:object="${pedido}" th:action="@{pedido/guardar}" method="post">
 			<div>
-				<label for="selectPedido">Pedido:</label>
-				<Select id="selectPedido" name="pedido.id">
+				<label for="selectProducto">Producto:</label>
+				<Select id="selectProducto" name="producto.id">
 					<option value="">--Seleccione producto--</option>
+					<option 
+						th:each="oProducto : ${listaProductos}" 
+						value="${oProducto.id}"
+						th:text="${oProducto.nombre}"
+						th:selected="${oProducto.id == producto.id}"
+					/>
 				</Select>
 			</div>
+			
+			<div th:replace="~{_frag/Inputs :: iHtml(number,'Cantidad: ', 'Ingrese cantidad', cantidad)}"></div>
+		
+			<div>
+				<button type="submit">Aceptar</button>
+				<a th:href="@{producto/index}" role="button">Cancelar</a>
+			</div>
 		</form>
+		
 	</body>
+	
 </html>

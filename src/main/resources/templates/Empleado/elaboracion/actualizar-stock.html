@@ -5,9 +5,9 @@
 </head>
 
 <body>
-    <h2>Elaboracion de Productos</h2>
+    <h2>Actualizar Stock</h2>
 
-    <form th:object="${elaboracion}" th:action="@{/elaboracion/guardar}" th:method="post">
+    <form th:object="${producto}" th:action="@{/producto/actualizar-stock}" th:method="post">
         <!-- Campo ID -->
         <div th:replace="~{_frag/Inputs :: iHtml (hidden,'ID:', '', id)}">
 			
@@ -26,24 +26,14 @@
         </div>
 
 
-        <div th:replace="~{_frag/Inputs :: iHtml (date,'Fecha Ingreso:', '', fecha_inicio)}">
-			
-		</div>
-
- 
-        <div th:replace="~{_frag/Inputs :: iHtml (date, 'Fecha Vencimiento:', '', fecha_vencimiento)}">
-			
-		</div>
-
-  
-        <div th:replace="~{_frag/Inputs :: iHtml (number, 'Cantidad:', 'Ingrese Cantidad', cantidad_elaborada)}">
+        <div th:replace="~{_frag/Inputs :: iHtml (number, 'Cantidad:', 'Ingrese Cantidad', stock)}">
         </div>
 
 
         <div>
             <br>
             <button type="submit">Guardar</button>
-            <a th:href="@{/elaboracion/index}" role="button">Cancelar</a>
+            <a th:href="@{/producto/index}" role="button">Cancelar</a>
         </div>
     </form>
 </body>

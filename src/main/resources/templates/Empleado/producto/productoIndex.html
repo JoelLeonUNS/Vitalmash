@@ -1,0 +1,43 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Vitalmash Tienda Virtual</title>
+</head>
+
+<body>
+    <h1>Listado de Productos</h1>
+    <div>
+        <ul>
+            <li><a th:href="@{/productos/nuevo}">Agregar Producto</a></li>
+            <li><a th:href="@{/}">Cerrar</a></li>
+        </ul>
+    </div>
+    
+    <div>
+        <h2>Productos</h2>
+        <table id="listadoProductos" border="1">
+            <thead>
+                <tr>
+                    <td>Nombre</td>
+                    <td>Descripción</td>
+                    <td>Categoría</td>
+                    <td>Precio</td>
+                    <td>Stock</td>
+                    <td>Editar</td>
+                    <td>Eliminar</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="producto : ${listaProductos}">
+                    <td th:text="${producto.nombre}">Nombre</td>
+                    <td th:text="${producto.descripcion}">Descripción</td>
+                    <td th:text="${producto.categoria.nombre}">Categoría</td>
+                    <td th:text="${producto.precio}">Precio</td>
+                    <td th:text="${producto.stock}">Stock</td>
+                    <td><a th:href="@{/productos/editar/}+${producto.id}">Editar</a></td>
+                    <td><a th:href="@{/productos/eliminar/}+${producto.id}">Eliminar</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

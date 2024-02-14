@@ -3,7 +3,6 @@ package com.sistemas.controlador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,15 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sistemas.entidad.Elaboracion;
-import com.sistemas.entidad.ElaboracionDetalle;
-import com.sistemas.entidad.ElaboracionDetalleID;
-import com.sistemas.entidad.Producto;
 import com.sistemas.entidad.ProductoElaborado;
 import com.sistemas.servicio.ElaboracionDetalleServiceImpl;
 import com.sistemas.servicio.ElaboracionServiceImpl;
 import com.sistemas.servicio.ProductoElaboradoServiceImpl;
 
-import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/producto")
@@ -57,7 +52,7 @@ public class ElaboracionController {
 	public String guardar(@RequestParam("productoElaborado.id") Long id, 
 			@RequestParam("cantidad") Integer cantidad,
 			Model modelo) {
-		
+
 		ProductoElaborado prodElaborado = productoElaboradoService.buscar(id);
 		prodElaborado.setStock(prodElaborado.getStock()+cantidad);
 		productoElaboradoService.actualizar(prodElaborado);

@@ -44,47 +44,6 @@ public class ProductoElaborado {
     @Column(nullable = false)
     private Integer stock;
 
-	public Integer getStock() {
-		return stock;
-	}
-
-	public void setStock(Integer stock) {
-		this.stock = stock;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Producto getProducto() {
-		return producto;
-	}
-
-	public void setProducto(Producto producto) {
-		this.producto = producto;
-	}
-
-	public Presentacion getPresentacion() {
-		return presentacion;
-	}
-
-	public void setPresentacion(Presentacion presentacion) {
-		this.presentacion = presentacion;
-	}
-
-	public Double getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(Double precio) {
-		this.precio = precio;
-	}
-    
-    
 }
 
 

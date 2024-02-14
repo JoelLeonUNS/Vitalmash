@@ -39,46 +39,6 @@ public class Pedido {
 	@Column(nullable = false)
 	private Boolean pagado;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Cliente getClientes() {
-		return clientes;
-	}
-
-	public void setClientes(Cliente clientes) {
-		this.clientes = clientes;
-	}
-
-	public Descuento getDescuento() {
-		return descuento;
-	}
-
-	public void setDescuento(Descuento descuento) {
-		this.descuento = descuento;
-	}
-
-	public Date getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
-
-	public Boolean getPagado() {
-		return pagado;
-	}
-
-	public void setPagado(Boolean pagado) {
-		this.pagado = pagado;
-	}
-	
 	
 }
 

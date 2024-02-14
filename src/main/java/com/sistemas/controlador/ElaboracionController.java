@@ -1,7 +1,5 @@
 package com.sistemas.controlador;
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.sistemas.entidad.Elaboracion;
 import com.sistemas.entidad.ElaboracionDetalle;
 import com.sistemas.entidad.ElaboracionDetalleID;
+import com.sistemas.entidad.ProductoElaborado;
 import com.sistemas.servicio.ElaboracionDetalleServiceImpl;
 import com.sistemas.servicio.ElaboracionServiceImpl;
 import com.sistemas.servicio.ProductoElaboradoServiceImpl;
@@ -22,7 +21,7 @@ import com.sistemas.servicio.ProductoElaboradoServiceImpl;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("/elaboracion")
+@RequestMapping("/producto")
 public class ElaboracionController {
 	
 	@Autowired
@@ -46,26 +45,20 @@ public class ElaboracionController {
 	}
 	
 	
-	@GetMapping("/nuevo") //Dirige al formulario vacio
-	public String agregarElaboracion(Model modelo) {
-		modelo.addAttribute("elaboracion", new ElaboracionDetalle());
+	@GetMapping("/actualizar-stock") //Dirige al formulario vacio
+	public String actualizarStock(Model modelo) {
+		modelo.addAttribute("producto", new ProductoElaborado());
 		modelo.addAttribute("listaProductos", productoElaboradoService.listarTodos());
-		return "Empleado/elaboracion/elaboracionForm";
+		return "Empleado/elaboracion/actualizar-stock";
 	}
 	
 	@PostMapping("/guardar")
-	public String guardarElaboracion(@RequestParam Long id, @RequestParam int cantidad,
-			@Valid ElaboracionDetalle elaboracionDetalle, BindingResult result, Model modelo) {
+	public String guardar(@RequestParam Long id, 
+			@RequestParam int cantidad,
+			@RequestParam ProductoElaborado producto,
+			Model modelo) {
 		
-		ElaboracionDetalleID elaDetalleID = new ElaboracionDetalleID();
-		ElaboracionDetalle elabDetalle = new ElaboracionDetalle();
-		
-		
-		
-		
-		if(result.hasErrors()) {
-			return "Empleado/elaboracion/elaboracionForm";
-		}
+		//productoElaboradoService.buscar(producto.getId());
 		
 		return "Empleado/elaboracion/elaboracionIndex";
 	}

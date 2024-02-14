@@ -13,10 +13,12 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "productosElaborados")
 @Data
+@NoArgsConstructor
 public class ProductoElaborado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

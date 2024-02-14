@@ -17,7 +17,12 @@
 				</Select>
 			</div>
 			
-			<div th:replace="~{_frag/Inputs :: iHtml(number,'Cantidad: ', 'Ingrese cantidad', cantidad)}"></div>
+			<div>
+				<label for="cantidad">Cantidad</label>
+				<div>
+					<input type="number" id="cantidad" name="cantidad">
+				</div>
+			</div>
 		
 			<div>
 				<button type="submit">Aceptar</button>

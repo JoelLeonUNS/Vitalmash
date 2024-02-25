@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.sistemas.entidad.Descuento;
 import com.sistemas.repositorio.DescuentoRepository;
 
+@Service
 public class DescuentoServiceImpl implements DescuentoService{
 	@Autowired
 	private DescuentoRepository descuentoRepository;

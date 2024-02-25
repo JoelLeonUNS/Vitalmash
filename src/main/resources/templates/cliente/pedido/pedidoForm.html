@@ -2,7 +2,7 @@
 	<body>
 		<h2>Datos del Pedido</h2>
 		
-		<form th:object="${pedido}" th:action="@{pedido/guardar}" method="post">
+		<form th:object="${pedido}" th:action="@{/pedido/guardar}" method="post">
 			<div>
 				<label for="selectProducto">Producto:</label>
 				<Select id="selectProducto" name="producto.id">
@@ -25,7 +25,7 @@
 		
 			<div>
 				<button type="submit">Aceptar</button>
-				<a th:href="@{pedido/index}" role="button">Cancelar</a>
+				<a th:href="@{pedido/}" role="button">Cancelar</a>
 			</div>
 		</form>
 		

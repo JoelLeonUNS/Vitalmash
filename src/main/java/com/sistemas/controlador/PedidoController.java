@@ -21,7 +21,7 @@ public class PedidoController {
 	
 	@Autowired private PedidoService pedidoService;
 	
-	@GetMapping({"/index", ""})
+	@GetMapping({"/", ""})
 	public String indice(Model model) {
 		model.addAttribute("listaPedido", pedidoService.listarTodos());
 		return "cliente/pedido/pedido";
@@ -42,7 +42,7 @@ public class PedidoController {
 		}else {
 			pedidoService.actualizar(pedido);
 		}
-		return "redirect:/cliente/pedido/index";
+		return "redirect:/cliente/pedido/pedido";
 	}
 	@GetMapping("/editar/{id}")
 	public String pedidoEditarForm(Model model, @PathVariable("id") Long id) {
@@ -53,6 +53,6 @@ public class PedidoController {
 	@GetMapping("/eliminar/{id}")
 	public String pedidoEliminar(Model model, @PathVariable("id") Long id) {
 		pedidoService.eliminar(id);
-		return "redirect:/cliente/pedido/index";
+		return "redirect:/cliente/pedido/pedido";
 	}
 }

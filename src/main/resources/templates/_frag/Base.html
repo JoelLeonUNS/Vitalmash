@@ -8,7 +8,7 @@
 </head>
 <header th:fragment="site-header">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-	    <div class="container">
+	    <div class="container-fluid ml-0 mr-0">
 	        <a class="navbar-brand" href="#">Vitalmash</a>
 	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 	                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,22 +22,22 @@
 						</a>
 	                </li>
 	                <li class="nav-item">
-	                    <a class="nav-link" href="#">
-							<i class="fas fa-shopping-cart"></i><span class="ml-2">Productos</span>
+	                    <a class="nav-link" href="#productos">
+							<i class="fas fa-prescription-bottle"></i><span class="ml-2">Productos</span>
 						</a>
 	                </li>
 	                <li class="nav-item">
-	                    <a class="nav-link" href="#">
-							<i class="fas fa-newspaper"></i><span class="ml-2">Blog</span>
+	                    <a class="nav-link" href="#nosotros">
+							<i class="fas fa-users"></i><span class="ml-2">Nosotros</span>
 						</a>
 	                </li>
 	                <li class="nav-item">
-	                    <a class="nav-link" href="#">
+	                    <a class="nav-link" href="#contacto">
 							<i class="fas fa-envelope"></i><span class="ml-2">Contacto</span>
 						</a>
 	                </li>
 	            </ul>
-	            <ul class="navbar-nav ml-lg-5 pl-lg-5">
+	            <ul class="navbar-nav navbar-nav ml-auto">
 	                <li class="nav-item">
 	                    <a class="nav-link" th:href="@{/login}">
 							<i class="fas fa-user"></i><span class="ml-2">Iniciar Sesión</span>
@@ -51,7 +51,7 @@
 
 <header th:fragment="site-cliente-header">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-	    <div class="container">
+	    <div class="container-fluid ml-0 mr-0">
 	        <a class="navbar-brand" href="#">Vitalmash</a>
 	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 	                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,13 +59,37 @@
 	        </button>
 	        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	            <ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+	                    <a class="nav-link" th:href="@{/cliente}">
+							<i class="fas fa-home"></i><span class="ml-2">Inicio</span>
+						</a>
+	                </li>
 	                <li class="nav-item">
-	                    <a class="nav-link" th:href="@{/pedido/}">Tienda</a>
+	                    <a class="nav-link" th:href="@{/pedido/}">
+							<i class="fas fa-shopping-cart"></i><span class="ml-2">Tienda</span>
+	                    </a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" href="#productos">
+							<i class="fas fa-prescription-bottle"></i><span class="ml-2">Productos</span>
+						</a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" href="#nosotros">
+							<i class="fas fa-users"></i><span class="ml-2">Nosotros</span>
+						</a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" href="#contacto">
+							<i class="fas fa-envelope"></i><span class="ml-2">Contacto</span>
+						</a>
 	                </li>
 	            </ul>
-	            <ul class="navbar-nav ml-lg-5">
+	            <ul class="navbar-nav ml-auto">
 	                <li class="nav-item">
-	                    <a class="nav-link" th:href="@{/index/}">Cerrar Sesión</a>
+	                    <a class="nav-link" th:href="@{/index}">
+							<i class="fas fa-sign-out-alt"></i><span class="ml-2">Cerrar Sesión</span>
+	                    </a>
 	                </li>
 	            </ul>
 	        </div>
@@ -74,7 +98,7 @@
 </header>
 <header th:fragment="site-empleado-header">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-	    <div class="container">
+	    <div class="container-fluid ml-0 mr-0">
 	        <a class="navbar-brand" href="#">Vitalmash</a>
 	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 	                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,16 +106,27 @@
 	        </button>
 	        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	            <ul class="navbar-nav ml-auto">
-	                <li class="nav-item">
-	                    <a class="nav-link" th:href="@{/producto/}">Productos</a>
+	                <li class="nav-item active">
+	                    <a class="nav-link" th:href="@{/index}">
+							<i class="fas fa-home"></i><span class="ml-2">Inicio</span>
+						</a>
 	                </li>
 	                <li class="nav-item">
-	                    <a class="nav-link" th:href="@{/producto/}">Productos</a>
+	                    <a class="nav-link" th:href="@{/pedido/}">
+							<i class="fas fa-shopping-cart"></i><span class="ml-2">Tienda</span>
+	                    </a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" th:href="@{/pedido/}">
+							<i class="fas fa-shopping-cart"></i><span class="ml-2">Tienda</span>
+	                    </a>
 	                </li>
 	            </ul>
-	            <ul class="navbar-nav ml-lg-5">
+	            <ul class="navbar-nav ml-auto">
 	                <li class="nav-item">
-	                    <a class="nav-link" th:href="@{/index/}">Cerrar Sesión</a>
+	                    <a class="nav-link" th:href="@{/index}">
+							<i class="fas fa-sign-out-alt"></i><span class="ml-2">Cerrar Sesión</span>
+	                    </a>
 	                </li>
 	            </ul>
 	        </div>

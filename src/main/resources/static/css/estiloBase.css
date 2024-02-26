@@ -15,6 +15,7 @@
     --lightColor40: #DBA4A8;
     --lightColor20: #EDD1D3;
 	}
+
 .navbar {
     min-height: 80px;
     background-color: var(--darkColor);

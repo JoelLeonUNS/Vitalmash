@@ -1,0 +1,93 @@
+<div th:fragment="site-inicio" id="inicio" class="container-fluid mt-5 pt-4 pr-0 pl-0">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img th:src="@{img/Web.jpg}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img th:src="@{img/Web1.jpg}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div  th:fragment="site-productos" id="productos" class="container-fluid mt-5 p-5">
+    <h1 class="display-4 text-center mb-5">Nuestros Productos</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="ruta_de_la_imagen_1.jpg" class="card-img-top" alt="Producto 1">
+                <div class="card-body">
+                    <h5 class="card-title">Kéfir con frutos rojos y mashua negra</h5>
+                    <p class="card-text"> Una deliciosa combinación de kéfir con frutos rojos y mashua negra, ofreciendo un equilibrio entre la acidez refrescante del kéfir y la dulzura natural de los frutos rojos, complementada con el sabor único de la mashua negra.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="ruta_de_la_imagen_2.jpg" class="card-img-top" alt="Producto 2">
+                <div class="card-body">
+                    <h5 class="card-title">Kéfir con mango y yacón</h5>
+                    <p class="card-text">Una refrescante mezcla de kéfir con mango y yacón, que combina la cremosidad del kéfir con la dulzura tropical del mango y el ligero toque de frescura del yacón, creando una experiencia de sabor única y saludable.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="ruta_de_la_imagen_3.jpg" class="card-img-top" alt="Producto 3">
+                <div class="card-body">
+                    <h5 class="card-title">Bebida probiótica de Kéfir</h5>
+                    <p class="card-text">Una bebida probiótica elaborada a base de kéfir, conocida por sus beneficios para la salud digestiva y su rico perfil nutricional. Refrescante y nutritiva, esta bebida ofrece una opción deliciosa para cuidar tu bienestar.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="site-nosotros" id="nosotros" class="container-fluid mt-5 p-5">
+    <h1 class="display-4 text-center mb-5">Acerca de nosotros</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="media">
+                <img th:src="@{img/imagen_izquierda.jpg}"  class="align-self-start mr-3 img-fluid rounded" alt="Imagen izquierda">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="media-body">
+                <h5 class="mt-0">Conoce más</h5>
+                <p>Vitalmash, es una marca creada por jóvenes estudiantes que buscan como objetivo principal:<br>Mejorar la alimentación de nuestra población, pero primordialmente para personas de 50 a más años. Debido a que la bebida aporta al cuidado de su salud intestinal y aumenta sus defensas, incluso que es agradable pero libre de octógonos y químicos.</p>
+       			<h5 class="mt-0">Integrantes</h5>
+                <p>Integran el equipo Anabel Corales Alejos (Ing. Agroindustrial, 6to ciclo), Dayana Cohaila Aguilar (Ing. Agroindustrial, 6to ciclo), Joel Leon Mondoñedo (Ing. Sistemas e Informática 5to ciclo) y Angie Rios Custodio (Ing. Sistemas e Informática, 5to ciclo) estudiantes de la Universidad Nacional del Santa.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="site-contacto" id="contacto" class="container-fluid mt-5 mb-5 p-5">
+    <h1 class="display-4 text-center mb-5">Contáctate con Nosotros</h1>
+    <p class="text-center mb-4">Si tiene alguna pregunta o solicitud, no dude en contactarnos. Déjanos tus datos y te atenderemos en breve.</p>
+    <form action="" class="content-section__form">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <input class="form-control" type="text" placeholder="Nombre propio o de empresa" required>
+            </div>
+            <div class="form-group col-md-6">
+                <input class="form-control" type="email" placeholder="Correo electrónico" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <input class="form-control" type="text" placeholder="Dirección" required>
+            </div>
+            <div class="form-group col-md-6">
+                <input class="form-control" type="tel" placeholder="Teléfono" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" rows="5" placeholder="Mensaje"></textarea>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Enviar &gt;&gt;</button>
+        </div>
+    </form>
+</div>

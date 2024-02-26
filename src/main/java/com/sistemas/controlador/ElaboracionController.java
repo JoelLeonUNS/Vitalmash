@@ -17,7 +17,7 @@ import com.sistemas.servicio.ProductoElaboradoServiceImpl;
 
 
 @Controller
-@RequestMapping("/producto")
+@RequestMapping("/elaboracion")
 public class ElaboracionController {
 	
 	@Autowired

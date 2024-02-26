@@ -1,0 +1,21 @@
+:root {
+    --darkColor: #230E15;
+    --darkColor80: #4F3E44;
+    --darkColor60: #7B6E73;
+    --darkColor40: #A79FA1;
+    --darkColor20: #D3CFD0;
+    --middleColor: #5B1B3D;
+    --middleColor80: #7C4964;
+    --middleColor60: #9D768B;
+    --middleColor40: #BDA4B1;
+    --middleColor20: #DED1D8;
+    --lightColor: #A61B25;
+    --lightColor80: #B84951;
+    --lightColor60: #CA767C;
+    --lightColor40: #DBA4A8;
+    --lightColor20: #EDD1D3;
+	}
+.navbar {
+    min-height: 80px;
+    background-color: var(--darkColor);
+}

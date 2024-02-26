@@ -1,41 +1,36 @@
-<html>
-
-<head>
-    <title>Vitalmash Tienda Virtual</title>
-</head>
-
-<body>
-    <h2>Actualizar Stock</h2>
-
-    <form th:object="${productoElaborado}" th:action="@{/producto/guardar}" th:method="post">
-        <!-- Campo ID -->
-        <div th:replace="~{_frag/Inputs :: iHtml (hidden,'ID:', '', id)}">
-			
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{_frag/Base::site-head}">
+	</head>
+	<body>
+		<header th:replace="~{_frag/Base::site-header}"></header>
+		<div class="container-fluid mt-5 pt-5">
+		    <h2>Actualizar Stock</h2>
+		    <form th:object="${productoElaborado}" th:action="@{/producto/guardar}" th:method="post">
+		        <!-- Campo ID -->
+		        <div th:replace="~{_frag/Inputs :: iHtml (hidden,'ID:', '', id)}">		
+				</div>
+		        <div th:replace="~{_frag/Inputs :: iHtml (select, 'Producto Elaborado:', '', productoElaborado)}">
+		            <Select id="selectProductoEla" name="productoElaborado.id">
+		                <option value=""> -- Seleccione Producto --</option>
+		                <option th:each="oProductoElaborado : ${listaProductos}" th:value="${oProductoElaborado.id}"
+		                    th:text="${oProductoElaborado.producto.nombre} + ', ' + ${oProductoElaborado.presentacion.nombre}"
+		                    th:selected="${oProductoElaborado.id == productoElaborado.id}">
+		
+		                </option>
+		            </Select>
+		        </div>
+		
+		
+		        <div th:replace="~{_frag/Inputs :: iHtml (number, 'Cantidad:', 'Ingrese Cantidad', stock)}">
+		        </div>
+		
+		
+		        <div>
+		            <br>
+		            <button type="submit">Guardar</button>
+		            <a th:href="@{/producto/index}" role="button">Cancelar</a>
+		        </div>
+		    </form>
 		</div>
-
-
-        <div th:replace="~{_frag/Inputs :: iHtml (select, 'Producto Elaborado:', '', productoElaborado)}">
-            <Select id="selectProductoEla" name="productoElaborado.id">
-                <option value=""> -- Seleccione Producto --</option>
-                <option th:each="oProductoElaborado : ${listaProductos}" th:value="${oProductoElaborado.id}"
-                    th:text="${oProductoElaborado.producto.nombre} + ', ' + ${oProductoElaborado.presentacion.nombre}"
-                    th:selected="${oProductoElaborado.id == productoElaborado.id}">
-
-                </option>
-            </Select>
-        </div>
-
-
-        <div th:replace="~{_frag/Inputs :: iHtml (number, 'Cantidad:', 'Ingrese Cantidad', stock)}">
-        </div>
-
-
-        <div>
-            <br>
-            <button type="submit">Guardar</button>
-            <a th:href="@{/producto/index}" role="button">Cancelar</a>
-        </div>
-    </form>
-</body>
-
+	</body>
 </html>

@@ -1,38 +1,39 @@
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>Vitalmash Tienda Virtual</title>
+	<head th:replace="~{_frag/Base::site-head}">
 	</head>
-	
 	<body>
-		<h1>Listado de Pedidos</h1>
-		<div>
-			<ul>
-				<li><a th:href="@{/pedido/nuevo} ">Agregar Pedido</a></li>
-				<li><a th:href="@{/}">Cerrar</a></li>
-			</ul>
-		</div>
-		
-		<div>
-			<table id="listadoPedidos" border="1">
-				<thead>
-					<tr>
-						<td>Producto</td>
-						<td>Cantidad</td>
-						<td>Editar</td>
-						<td>Eliminar</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="pedido : ${listaPedidos}">
-						<td th:text="${pedido.producto} ">Producto</td>
-						<td th:text="$ {pedido.cantidad} ">Cantidad</td>
-						<td><a th:href="@{/pedido/editar/}+${pedido.id] ">
-						Editar</a></td>
-						<td><a th:href="@{/pedido/eliminar/+${pedido.id]">
-						Eliminar</a></td>
-					</tr>
-				</tbody>
-			</table>
+		<header th:replace="~{_frag/Base::site-header}"></header>
+		<div class="container-fluid mt-5 pt-5">
+			<h1>Listado de Pedidos</h1>
+			<div>
+				<ul>
+					<li><a th:href="@{/pedido/nuevo} ">Agregar Pedido</a></li>
+					<li><a th:href="@{/}">Cerrar</a></li>
+				</ul>
+			</div>
+			
+			<div>
+				<table id="listadoPedidos" border="1">
+					<thead>
+						<tr>
+							<td>Producto</td>
+							<td>Cantidad</td>
+							<td>Editar</td>
+							<td>Eliminar</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="pedido : ${listaPedidos}">
+							<td th:text="${pedido.producto} ">Producto</td>
+							<td th:text="$ {pedido.cantidad} ">Cantidad</td>
+							<td><a th:href="@{/pedido/editar/}+${pedido.id] ">
+							Editar</a></td>
+							<td><a th:href="@{/pedido/eliminar/+${pedido.id]">
+							Eliminar</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</body>
 </html>

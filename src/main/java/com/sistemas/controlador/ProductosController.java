@@ -40,7 +40,7 @@ public class ProductosController {
     public String listarProductos(Model modelo) {
         modelo.addAttribute("listaProductos", productoService.listarTodos());
         modelo.addAttribute("listaProductosElaborados", productoElaboradoService.listarTodos());
-        return "Empleado/producto/productoIndex";
+        return "empleado/producto/productoIndex";
     }
  
     @GetMapping("/nuevo")
@@ -49,14 +49,14 @@ public class ProductosController {
         modelo.addAttribute("productoElaborado", new ProductoElaborado());
         modelo.addAttribute("listaCategorias", categoriaService.listarTodos());
         modelo.addAttribute("listaPresentaciones", presentacionService.listarTodos());
-        return "Empleado/producto/productoForm";
+        return "empleado/producto/productoForm";
     }
 
     @PostMapping("/guardarProducto")
     public String guardarProducto(@Valid @ModelAttribute("producto") Producto producto, BindingResult resultProducto, Model modelo) {
         if (resultProducto.hasErrors()) {
             prepararModeloParaFormulario(modelo);
-            return "Empleado/producto/productoForm";
+            return "empleado/producto/productoForm";
         }
         productoService.agregar(producto);
         return "redirect:/producto/index";
@@ -66,7 +66,7 @@ public class ProductosController {
     public String guardarProductoElaborado(@Valid @ModelAttribute("productoElaborado") ProductoElaborado productoElaborado, BindingResult resultProductoElaborado, Model modelo) {
         if (resultProductoElaborado.hasErrors()) {
             prepararModeloParaFormulario(modelo);
-            return "Empleado/producto/productoForm";
+            return "empleado/producto/productoForm";
         }
         productoElaboradoService.agregar(productoElaborado);
         return "redirect:/producto/index";

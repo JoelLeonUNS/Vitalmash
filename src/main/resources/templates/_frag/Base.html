@@ -1,11 +1,13 @@
+<!-- HEAD PÚBLICO -->
 <head th:fragment="site-head">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vitalmash</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/estiloBase.css">
+	<link rel="stylesheet" th:href="@{css/estiloBase.css}">
 </head>
+<!-- HEADER -->
 <header th:fragment="site-header">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 	    <div class="container-fluid ml-0 mr-0">
@@ -65,7 +67,7 @@
 						</a>
 	                </li>
 	                <li class="nav-item">
-	                    <a class="nav-link" th:href="@{/pedido/}">
+	                    <a class="nav-link" th:href="@{/pedido}">
 							<i class="fas fa-shopping-cart"></i><span class="ml-2">Tienda</span>
 	                    </a>
 	                </li>
@@ -113,12 +115,12 @@
 	                </li>
 	                <li class="nav-item">
 	                    <a class="nav-link" th:href="@{/pedido/}">
-							<i class="fas fa-shopping-cart"></i><span class="ml-2">Tienda</span>
+							<i class="fas fa-plus"></i><span class="ml-2">Registro de Productos</span>
 	                    </a>
 	                </li>
 	                <li class="nav-item">
 	                    <a class="nav-link" th:href="@{/pedido/}">
-							<i class="fas fa-shopping-cart"></i><span class="ml-2">Tienda</span>
+							<i class="fas fa-sync"></i><span class="ml-2">Registro de Elaboraciones</span>
 	                    </a>
 	                </li>
 	            </ul>

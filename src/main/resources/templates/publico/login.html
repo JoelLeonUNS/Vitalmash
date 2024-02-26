@@ -12,21 +12,21 @@
 			    <div class="col-md-6">
 			    </div>
 			    <div class="col-md-6 d-flex align-items-center" th:style="'background: rgba(255, 255, 255, 0.5);
-																							backdrop-filter: blur(16px);'">
+																			backdrop-filter: blur(16px);'">
 			        <div class="container">
 			            <div class="row justify-content-center">
 			                <div class="col-md-8">
 			                    <h2 class="text-center mb-4">Iniciar Sesión</h2>
-			                    <form th:action="@{/cliente}" method="post">
+			                    <form th:object="${usuario}" th:action="@{/login}" th:method="post">
 			                        <div class="form-group">
-			                            <label for="exampleInputEmail1">Nombre de Usuario</label>
-			                            <input type="email" class="form-control" id="exampleInputEmail1"
-			                                   aria-describedby="emailHelp" placeholder="Ingrese su nombre de usuario">
+			                            <label for="usuario-login">Nombre de Usuario</label>
+			                            <input type="text" class="form-control" id="usuario-login" placeholder="Ingrese su nombre de usuario"
+			                            name="nombreUsuario">
 			                        </div>
 			                        <div class="form-group">
-			                            <label for="exampleInputPassword1">Contraseña</label>
-			                            <input type="password" class="form-control" id="exampleInputPassword1"
-			                                   placeholder="Ingrese su contraseña">
+			                            <label for="clave-login">Contraseña</label>
+			                            <input type="password" class="form-control" id="clave-login" placeholder="Ingrese su contraseña"
+			                            name="clave">
 			                        </div>
 			                        <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
 			                    </form>

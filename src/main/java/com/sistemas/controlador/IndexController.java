@@ -13,23 +13,19 @@ public class IndexController {
 	}
 	
 	@GetMapping("/cliente")
-	@PostMapping("/cliente")
-	public String clienteIndex() {
-		return "cliente/clienteIndex";
-	}
+    public String clienteIndex() {
+        return "cliente/clienteIndex";
+    }
+    
+    @PostMapping("/cliente")
+    public String clientePost() {
+        // Manejo de la solicitud POST para /cliente
+        return "cliente/clienteIndex";
+    }
 	
 	@GetMapping("/login")
 	public String login() {
 		return "publico/login";
 	}
-	
-	@GetMapping("/pedido")
-	public String pedido() {
-		return "cliente/pedido/pedido";
-	}
-	
-	@GetMapping("/producto")
-	public String producto() {
-		return "empleado/producto/productoIndex";
-	}
+
 }

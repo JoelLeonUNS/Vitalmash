@@ -14,11 +14,9 @@
 					<option th:each="oProductoElaborado : ${listaProductos}" th:value="${oProductoElaborado.id}"
 						th:text="${oProductoElaborado.producto.nombre} + ', ' + ${oProductoElaborado.presentacion.nombre}"
 						th:selected="${oProductoElaborado.id == producto.id}">
-
 					</option>
 				</Select>
 			</div>
-
 			<div>
 				<label for="cantidad">Cantidad</label>
 				<div>

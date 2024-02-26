@@ -30,7 +30,7 @@ public class Pedido {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_descuento", referencedColumnName = "id", 
-	nullable = false, foreignKey = @ForeignKey(name = "fk_clientes_descuentos"))
+	nullable = true, foreignKey = @ForeignKey(name = "fk_clientes_descuentos"))
 	private Descuento descuento;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")

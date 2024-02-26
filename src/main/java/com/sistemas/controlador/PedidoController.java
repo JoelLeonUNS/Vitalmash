@@ -9,40 +9,64 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sistemas.entidad.Pedido;
-import com.sistemas.servicio.PedidoService;
-
-import jakarta.validation.Valid;
+import com.sistemas.entidad.PedidoDetalle;
+import com.sistemas.entidad.ProductoElaborado;
+import com.sistemas.servicio.ClienteServiceImpl;
+import com.sistemas.servicio.PedidoDetalleServiceImpl;
+import com.sistemas.servicio.PedidoServiceImpl;
+import com.sistemas.servicio.ProductoElaboradoServiceImpl;
 
 @Controller
 @RequestMapping("/pedido")
 public class PedidoController {
 	
-	@Autowired private PedidoService pedidoService;
+	@Autowired private PedidoServiceImpl pedidoService;
+	@Autowired private PedidoDetalleServiceImpl pedidoDetalleService;
+	@Autowired private ProductoElaboradoServiceImpl productoElaboradoService;
+	@Autowired private ClienteServiceImpl clienteService;
+	private Pedido pedido;
+	
+	public PedidoController() {
+		this.pedido = new Pedido();
+	}
+	
+	@ModelAttribute("pedido")
+	public Pedido getPedido() {
+		return pedido;
+	}
 	
 	@GetMapping({"/", ""})
 	public String indice(Model model) {
-		model.addAttribute("listaPedido", pedidoService.listarTodos());
+		model.addAttribute("listaPedidos", pedidoDetalleService.listarTodos());
 		return "cliente/pedido/pedido";
 	}
 	@GetMapping("/nuevo")
 	public String pedidoNuevoForm(Model model) {
-		model.addAttribute("pedido", new Pedido());
+		pedido.setClientes(clienteService.buscar((long) 1));
+		pedido.setPagado(false);
+		pedido = pedidoService.agregar(pedido);
+		model.addAttribute("producto", new ProductoElaborado());
+		model.addAttribute("listaProductos", productoElaboradoService.listarTodos());
 		return "cliente/pedido/pedidoForm";
 	}
 	@PostMapping("/guardar")
-	public String pedidoNuevo(@Valid @ModelAttribute("pedido") Pedido pedido, BindingResult bindingResult, Model model) {
-		if(bindingResult.hasErrors()) {
-			return "cliente/pedido/pedidoForm";
-		}
+	public String pedidoNuevo(@RequestParam("producto.id") Long id, 
+			@RequestParam("cantidad") Integer cantidad,
+			Model modelo) {
 		
-		if(pedido.getId()==null) {
-			pedidoService.agregar(pedido);
-		}else {
-			pedidoService.actualizar(pedido);
-		}
-		return "redirect:/cliente/pedido/pedido";
+		PedidoDetalle pedidoDetalle = new PedidoDetalle();
+		pedidoDetalle.setPedido(pedido);
+		pedidoDetalle.setIdProductoElaborado(productoElaboradoService.buscar(id));
+		pedidoDetalle.setCantidad(cantidad);
+		
+		pedidoDetalleService.agregar(pedidoDetalle);
+		modelo.addAttribute("listaPedidos", pedidoDetalleService.listarTodos());
+		
+		
+		return "cliente/pedido/pedido";
 	}
 	@GetMapping("/editar/{id}")
 	public String pedidoEditarForm(Model model, @PathVariable("id") Long id) {

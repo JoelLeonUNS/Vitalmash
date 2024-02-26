@@ -1,36 +1,37 @@
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="~{_frag/Base::site-head}">
-	</head>
-	<body>
-		<header th:replace="~{_frag/Base::site-header}"></header>
-		<div class="container-fluid mt-5 pt-5">
-			<h2>Datos del Pedido</h2>
-			<form th:object="${pedido}" th:action="@{/pedido/guardar}" method="post">
+
+<head th:replace="~{_frag/Base::site-head}">
+</head>
+
+<body>
+	<header th:replace="~{_frag/Base::site-header}"></header>
+	<div class="container-fluid mt-5 pt-5">
+		<h2>Datos del Pedido</h2>
+		<form th:object="${producto}" th:action="@{/pedido/guardar}" method="post">
+			<div>
+				<Select id="selectProductoEla" name="producto.id">
+					<option value=""> -- Seleccione Producto --</option>
+					<option th:each="oProductoElaborado : ${listaProductos}" th:value="${oProductoElaborado.id}"
+						th:text="${oProductoElaborado.producto.nombre} + ', ' + ${oProductoElaborado.presentacion.nombre}"
+						th:selected="${oProductoElaborado.id == producto.id}">
+
+					</option>
+				</Select>
+			</div>
+
+			<div>
+				<label for="cantidad">Cantidad</label>
 				<div>
-					<label for="selectProducto">Producto:</label>
-					<Select id="selectProducto" name="producto.id">
-						<option value="">--Seleccione producto--</option>
-						<option 
-							th:each="oProducto : ${listaProductos}" 
-							value="${oProducto.id}"
-							th:text="${oProducto.nombre}"
-							th:selected="${oProducto.id == producto.id}"
-						/>
-					</Select>
+					<input type="number" id="cantidad" name="cantidad">
 				</div>
-				<div>
-					<label for="cantidad">Cantidad</label>
-					<div>
-						<input type="number" id="cantidad" name="cantidad">
-					</div>
-				</div>
-			
-				<div>
-					<button type="submit">Aceptar</button>
-					<a th:href="@{pedido/}" role="button">Cancelar</a>
-				</div>
-			</form>
-		</div>
-	</body>
-	
+			</div>
+
+			<div>
+				<button type="submit">Aceptar</button>
+				<a th:href="@{/pedido}" role="button">Cancelar</a>
+			</div>
+		</form>
+	</div>
+</body>
+
 </html>

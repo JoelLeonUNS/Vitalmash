@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{_frag/Base::site-head}">
+	</head>
+	<body>
+		<header th:replace="~{_frag/Base::site-header}"></header>
+		<div class="container-fluid mt-5 pt-4">
+			<div class="row" th:style="'background-image:url('+@{/img/web.jpg}+'); 
+							            background-size: cover;
+							            background-position: left;
+							            height: 100vh;'">
+			    <div class="col-md-6">
+			    </div>
+			    <div class="col-md-6 d-flex align-items-center" th:style="'background: rgba(255, 255, 255, 0.5);
+																							backdrop-filter: blur(16px);'">
+			        <div class="container">
+			            <div class="row justify-content-center">
+			                <div class="col-md-8">
+			                    <h2 class="text-center mb-4">Iniciar Sesión</h2>
+			                    <form>
+			                        <div class="form-group">
+			                            <label for="exampleInputEmail1">Nombre de Usuario</label>
+			                            <input type="email" class="form-control" id="exampleInputEmail1"
+			                                   aria-describedby="emailHelp" placeholder="Ingrese su nombre de usuario">
+			                        </div>
+			                        <div class="form-group">
+			                            <label for="exampleInputPassword1">Contraseña</label>
+			                            <input type="password" class="form-control" id="exampleInputPassword1"
+			                                   placeholder="Ingrese su contraseña">
+			                        </div>
+			                        <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+			                    </form>
+			            	</div>
+			        	</div>
+			    	</div>
+		       	</div>
+			</div>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
+	</body>
+</html>

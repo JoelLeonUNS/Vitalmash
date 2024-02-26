@@ -2,7 +2,6 @@ package com.sistemas.controlador;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class IndexController {
@@ -12,6 +11,11 @@ public class IndexController {
 		return "index";
 	}
 	
+	@GetMapping("/login")
+	public String login() {
+		return "publico/login";
+	}
+	
 	@GetMapping("/pedido")
 	public String pedido() {
 		return "cliente/pedido/pedido";
@@ -19,6 +23,6 @@ public class IndexController {
 	
 	@GetMapping("/producto")
 	public String producto() {
-		return "Empleado/producto/productoIndex";
+		return "empleado/producto/productoIndex";
 	}
 }

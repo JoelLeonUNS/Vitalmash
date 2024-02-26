@@ -22,7 +22,7 @@ import com.sistemas.servicio.ProductoService;
 import jakarta.validation.Valid;
  
 @Controller
-@RequestMapping("/productos")
+@RequestMapping("/producto")
 public class ProductosController {
     @Autowired
     private ProductoService productoService;
@@ -59,7 +59,7 @@ public class ProductosController {
             return "Empleado/producto/productoForm";
         }
         productoService.agregar(producto);
-        return "redirect:/productos/index";
+        return "redirect:/producto/index";
     }
  
     @PostMapping("/guardarProductoElaborado")
@@ -69,7 +69,7 @@ public class ProductosController {
             return "Empleado/producto/productoForm";
         }
         productoElaboradoService.agregar(productoElaborado);
-        return "redirect:/productos/index";
+        return "redirect:/producto/index";
     }
  
     private void prepararModeloParaFormulario(Model modelo) {

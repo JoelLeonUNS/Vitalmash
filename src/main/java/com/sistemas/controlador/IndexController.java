@@ -16,4 +16,9 @@ public class IndexController {
 	public String pedido() {
 		return "cliente/pedido/pedido";
 	}
+	
+	@GetMapping("/producto")
+	public String producto() {
+		return "Empleado/producto/productoIndex";
+	}
 }

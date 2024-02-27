@@ -27,4 +27,5 @@ public class Usuario {
 	@NotBlank(message = "El rol no debe estar en blanco") 
 	private String rol;	
 	
+	
 }

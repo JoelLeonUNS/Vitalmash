@@ -28,6 +28,9 @@
 			                            <input type="password" class="form-control" id="clave-login" placeholder="Ingrese su contraseña"
 			                            name="clave">
 			                        </div>
+			                        <div th:if="${error}" class="alert alert-danger">
+									    <span th:text="${error}"></span> 
+									</div>
 			                        <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
 			                    </form>
 			            	</div>

@@ -47,7 +47,7 @@ public class PedidoController {
 	public String pedidoNuevoForm(Model model) {
 		pedido.setClientes(clienteService.buscar((long) 1));
 		pedido.setPagado(false);
-		pedido = pedidoService.agregar(pedido);
+		//pedido = pedidoService.agregar(pedido);
 		model.addAttribute("producto", new ProductoElaborado());
 		model.addAttribute("listaProductos", productoElaboradoService.listarTodos());
 		return "cliente/pedido/pedidoForm";
@@ -62,12 +62,23 @@ public class PedidoController {
 		pedidoDetalle.setIdProductoElaborado(productoElaboradoService.buscar(id));
 		pedidoDetalle.setCantidad(cantidad);
 		
-		pedidoDetalleService.agregar(pedidoDetalle);
+		//pedidoDetalleService.agregar(pedidoDetalle);
 		modelo.addAttribute("listaPedidos", pedidoDetalleService.listarTodos());
+		modelo.addAttribute("producto", pedidoDetalle.getIdProductoElaborado());
+		modelo.addAttribute("cantidad", pedidoDetalle.getCantidad());
 		
 		
-		return "cliente/pedido/pedido";
+		return "cliente/pedido/pago";
 	}
+	
+	
+	@PostMapping("/verificar")
+	public String procesarPago(Model model) {
+		
+		return "cliente/pedido/pago";
+	}
+	
+	
 	@GetMapping("/editar/{id}")
 	public String pedidoEditarForm(Model model, @PathVariable("id") Long id) {
 		Pedido buscado = pedidoService.buscar(id);

@@ -16,6 +16,11 @@ public class IndexController {
     public String clienteIndex() {
         return "cliente/clienteIndex";
     }
+	
+	@GetMapping("/empleado")
+    public String empleadoIndex() {
+        return "empleado/empleadoIndex";
+    }
     
     @PostMapping("/cliente")
     public String clientePost() {

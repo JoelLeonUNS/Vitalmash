@@ -4,18 +4,17 @@
 	</head>
 	<body>
 		<header th:replace="~{_frag/Base::site-cliente-header}"></header>
-		<div class="container-fluid mt-5 pt-5">
-			<h1>Listado de Pedidos</h1>
-			<div>
-				<ul>
-					<li><a th:href="@{/pedido/nuevo} ">Agregar Pedido</a></li>
-					<li><a th:href="@{/}">Cerrar</a></li>
+		<div class="container-fluid mt-5 p-5">
+			<h1 class="mt-5 mb-4">Carrito de compras</h1>
+			<div class="d-flex justify-content-between mb-4">
+				<ul class="list-inline">
+					<li class="list-inline-item"><a class="btn btn-primary" th:href="@{/pedido/nuevo} ">Agregar Pedido</a></li>
+					<li class="list-inline-item"><a class="btn btn-secondary" th:href="@{/cliente}">Cerrar</a></li>
 				</ul>
 			</div>
-	
-			<div>
-				<table id="listadoPedidos" border="1">
-					<thead>
+			<div class="table-responsive">
+				<table id="listadoPedidos" class="table table-bordered">
+					<thead class="thead-dark">
 						<tr>
 							<td>Producto</td>
 							<td>Cantidad</td>
@@ -29,14 +28,18 @@
 								th:text="${pedido.idProductoElaborado.producto.nombre + ' ' + pedido.idProductoElaborado.presentacion.nombre} ">
 								Producto</td>
 							<td th:text="${pedido.cantidad} ">Cantidad</td>
-							<td><a th:href="@{/pedido/editar/} + ${pedido.id_numero} ">
+							<td><a class="btn btn-primary" th:href="@{/pedido/editar/} + ${pedido.id_numero} ">
 									Editar</a></td>
-							<td><a th:href="@{/pedido/eliminar/} + ${pedido.id_numero}">
+							<td><a  class="btn btn-danger" th:href="@{/pedido/eliminar/} + ${pedido.id_numero}">
 									Eliminar</a></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
+		<script th:src="@{js/scriptBase.js}"></script>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	</body>
 </html>

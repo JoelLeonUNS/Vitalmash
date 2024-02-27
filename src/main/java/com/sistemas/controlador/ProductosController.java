@@ -36,7 +36,7 @@ public class ProductosController {
     @Autowired
     private PresentacionService presentacionService;
  
-    @GetMapping("/index")
+    @GetMapping({"/", ""})
     public String listarProductos(Model modelo) {
         modelo.addAttribute("listaProductos", productoService.listarTodos());
         modelo.addAttribute("listaProductosElaborados", productoElaboradoService.listarTodos());
@@ -59,7 +59,7 @@ public class ProductosController {
             return "empleado/producto/productoForm";
         }
         productoService.agregar(producto);
-        return "redirect:/producto/index";
+        return "redirect:/producto";
     }
  
     @PostMapping("/guardarProductoElaborado")
@@ -69,7 +69,7 @@ public class ProductosController {
             return "empleado/producto/productoForm";
         }
         productoElaboradoService.agregar(productoElaborado);
-        return "redirect:/producto/index";
+        return "redirect:/producto";
     }
  
     private void prepararModeloParaFormulario(Model modelo) {

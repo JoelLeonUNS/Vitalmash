@@ -34,10 +34,10 @@ public class ElaboracionController {
         return elaboracion;
     }
 
-	@GetMapping("/index") //Dirige a la tabla
+	@GetMapping({"/", ""}) //Dirige a la tabla
 	public String verIndex(Model modelo) {
 		modelo.addAttribute("listaelaboraciones", elaboracionDetalleService.listarTodos());
-		return "Empleado/elaboracion/elaboracionIndex";
+		return "empleado/elaboracion/elaboracionIndex";
 	}
 	
 	
@@ -45,7 +45,7 @@ public class ElaboracionController {
 	public String actualizarStock(Model modelo) {	
 		modelo.addAttribute("productoElaborado", new ProductoElaborado());
 		modelo.addAttribute("listaProductos", productoElaboradoService.listarTodos());
-		return "Empleado/elaboracion/prueba";
+		return "empleado/elaboracion/prueba";
 	}
 	
 	@PostMapping("/guardar")
@@ -57,7 +57,7 @@ public class ElaboracionController {
 		prodElaborado.setStock(prodElaborado.getStock()+cantidad);
 		productoElaboradoService.actualizar(prodElaborado);
 		
-		return "index";
+		return "empleado/empleadoIndex";
 	}
 	
 }

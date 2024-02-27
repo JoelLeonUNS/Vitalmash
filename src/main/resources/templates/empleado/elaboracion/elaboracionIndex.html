@@ -2,20 +2,20 @@
 	<head th:replace="~{_frag/Base::site-head}">
 	</head>
 <body>
-	<header th:replace="~{_frag/Base::site-header}"></header>
-	<div class="container-fluid mt-5 pt-5">
-		<h1>Listado de Elaboraciones</h1>
-		<div>
-			<ul>
-				<li><a th:href="@{/elaboracion/nuevo}">Agregar Elaboracion</a></li>
-				<li><a th:href="@{/}">Cerrar</a></li>
+	<header th:replace="~{_frag/Base::site-empleado-header}"></header>
+	<div class="container-fluid mt-5 p-5">
+		<h1 class="mb-4">Listado de Elaboraciones</h1>
+		<div class="mb-3">
+			<ul class="list-inline">
+				<li class="list-inline-item"><a class="btn btn-primary" th:href="@{/elaboracion/actualizar-stock}">Agregar Elaboracion</a></li>
+				<li class="list-inline-item"><a class="btn btn-secondary" th:href="@{/empleado}">Cerrar</a></li>
 			</ul>
 		</div>
-		<div>
-			<table id="listadoElaboracion" border="1">
-				<thead>
+		<div class="table-responsive">
+			<table id="listadoElaboracion" class="table table-bordered">
+				<thead class="thead-dark">
 					<tr>
-						<tr>Producto Elaborado</tr>
+						<td>Producto Elaborado</td>
 						<td>Fecha Elaboracion</td>
 						<td>Fecha Vencimiento</td>
 						<td>Cantidad</td>
@@ -36,11 +36,11 @@
 						</td>
 						<td th:text="${elaboracionDetalle.cantidad_elaborada}">Cantidad</td>
 						<td>
-							<a th:href="@{/elaboracion/editar/{id}(id=${elaboracion.id})}">
+							<a class="btn btn-primary" th:href="@{/elaboracion/editar/{id}(id=${elaboracion.id})}">
 								Editar</a>
 						</td>
 						<td>
-							<a th:href="@{/elaboracion/eliminar/{id}(id=${elaboracion.id})}">
+							<a class="btn btn-danger" th:href="@{/elaboracion/eliminar/{id}(id=${elaboracion.id})}">
 								Eliminar</a>
 						</td>
 					</tr>
@@ -48,9 +48,9 @@
 			</table>
 		</div>
 		<div>
-			<ul>
-				<li><a th:href="@{/elaboracion/nuevo}">Agregar elaboracion</a></li>
-				<li><a th:href="@{/}">Cerrar</a></li>
+			<ul class="list-inline">
+				<li class="list-inline-item"><a class="btn btn-primary" th:href="@{/elaboracion/actualizar-stock}">Agregar elaboracion</a></li>
+				<li class="list-inline-item"><a class="btn btn-secondary" th:href="@{/empleado}">Cerrar</a></li>
 			</ul>
 		</div>
 	</div>	

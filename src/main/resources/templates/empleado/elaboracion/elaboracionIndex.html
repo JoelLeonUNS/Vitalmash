@@ -1,59 +1,63 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head th:replace="~{_frag/Base::site-head}">
 	</head>
-<body>
-	<header th:replace="~{_frag/Base::site-empleado-header}"></header>
-	<div class="container-fluid mt-5 p-5">
-		<h1 class="mb-4">Listado de Elaboraciones</h1>
-		<div class="mb-3">
-			<ul class="list-inline">
-				<li class="list-inline-item"><a class="btn btn-primary" th:href="@{/elaboracion/actualizar-stock}">Agregar Elaboracion</a></li>
-				<li class="list-inline-item"><a class="btn btn-secondary" th:href="@{/empleado}">Cerrar</a></li>
-			</ul>
-		</div>
-		<div class="table-responsive">
-			<table id="listadoElaboracion" class="table table-bordered">
-				<thead class="thead-dark">
-					<tr>
-						<td>Producto Elaborado</td>
-						<td>Fecha Elaboracion</td>
-						<td>Fecha Vencimiento</td>
-						<td>Cantidad</td>
-						<td>Editar</td> 
-						<td>Eliminar</td> 
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="elaboracion : ${listaelaboraciones}">
-						<td th:text="${elaboracionDetalleID.productoElaborado}">
-							Producto Elaborado
+	<body>
+		<header th:replace="~{_frag/Base::site-empleado-header}"></header>
+		<div class="container-fluid mt-5 p-5">
+			<h1 class="mb-4">Listado de Elaboraciones</h1>
+			<div class="mb-3">
+				<ul class="list-inline">
+					<li class="list-inline-item"><a class="btn btn-primary" th:href="@{/elaboracion/actualizar-stock}">Agregar Elaboracion</a></li>
+					<li class="list-inline-item"><a class="btn btn-secondary" th:href="@{/empleado}">Cerrar</a></li>
+				</ul>
+			</div>
+			<div class="table-responsive">
+				<table id="listadoElaboracion" class="table table-bordered">
+					<thead class="thead-dark">
+						<tr>
+							<td>Producto Elaborado</td>
+							<td>Fecha Elaboracion</td>
+							<td>Fecha Vencimiento</td>
+							<td>Cantidad</td>
+							<td>Editar</td> 
+							<td>Eliminar</td> 
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="elaboracion : ${listaelaboraciones}">
+							<td th:text="${elaboracionDetalleID.productoElaborado}">
+								Producto Elaborado
+								</td>
+							<td th:text="${#calendars.format(elaboracion.fecha_inicio, 'dd/MM/yyyy')}">
+								Fecha Elaboracion
 							</td>
-						<td th:text="${#calendars.format(elaboracion.fecha_inicio, 'dd/MM/yyyy')}">
-							Fecha Elaboracion
-						</td>
-						<td th:text="${#calendars.format(elaboracion.fecha_vencimiento, 'dd/MM/yyyy')}">
-							Fecha Vencimiento
-						</td>
-						<td th:text="${elaboracionDetalle.cantidad_elaborada}">Cantidad</td>
-						<td>
-							<a class="btn btn-primary" th:href="@{/elaboracion/editar/{id}(id=${elaboracion.id})}">
-								Editar</a>
-						</td>
-						<td>
-							<a class="btn btn-danger" th:href="@{/elaboracion/eliminar/{id}(id=${elaboracion.id})}">
-								Eliminar</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div>
-			<ul class="list-inline">
-				<li class="list-inline-item"><a class="btn btn-primary" th:href="@{/elaboracion/actualizar-stock}">Agregar elaboracion</a></li>
-				<li class="list-inline-item"><a class="btn btn-secondary" th:href="@{/empleado}">Cerrar</a></li>
-			</ul>
-		</div>
-	</div>	
-</body>
+							<td th:text="${#calendars.format(elaboracion.fecha_vencimiento, 'dd/MM/yyyy')}">
+								Fecha Vencimiento
+							</td>
+							<td th:text="${elaboracionDetalle.cantidad_elaborada}">Cantidad</td>
+							<td>
+								<a class="btn btn-primary" th:href="@{/elaboracion/editar/{id}(id=${elaboracion.id})}">
+									Editar</a>
+							</td>
+							<td>
+								<a class="btn btn-danger" th:href="@{/elaboracion/eliminar/{id}(id=${elaboracion.id})}">
+									Eliminar</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div>
+				<ul class="list-inline">
+					<li class="list-inline-item"><a class="btn btn-primary" th:href="@{/elaboracion/actualizar-stock}">Agregar elaboracion</a></li>
+					<li class="list-inline-item"><a class="btn btn-secondary" th:href="@{/empleado}">Cerrar</a></li>
+				</ul>
+			</div>
+		</div>	
+		<script th:src="@{js/scriptBase.js}"></script>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	</body>
 
 </html>

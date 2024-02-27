@@ -1,38 +1,38 @@
-<html>
-
-<head>
-    <title>Vitalmash Tienda Virtual</title>
-</head>
-
-<body>
-    <h2>Actualizar Stock</h2>
-
-    <form th:object="${productoElaborado}" th:action="@{/producto/guardar}" th:method="post">
-        <!-- Campo ID -->
-
-        <div>
-            <Select id="selectProductoEla" name="productoElaborado.id">
-                <option value=""> -- Seleccione Producto --</option>
-                <option th:each="oProductoElaborado : ${listaProductos}" th:value="${oProductoElaborado.id}"
-                    th:text="${oProductoElaborado.producto.nombre} + ', ' + ${oProductoElaborado.presentacion.nombre}"
-                    th:selected="${oProductoElaborado.id == productoElaborado.id}">
-
-                </option>
-            </Select>
-        </div>
-        
-        <div>
-			<label for="cantidad">Cantidad</label>
-			<div>
-				<input type="number" id="cantidad" name="cantidad">
-			</div>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{_frag/Base::site-head}">
+	</head>
+	<body>
+		<header th:replace="~{_frag/Base::site-empleado-header}"></header>
+		<div class="container-fluid mt-5 p-5">
+		    <h2 class="mb-4">Actualizar Stock</h2>
+		    <form th:object="${productoElaborado}" th:action="@{/producto/guardar}" th:method="post">
+		        <!-- Campo ID -->
+		        <div  class="form-group">
+		            <Select id="selectProductoEla" class="form-control" name="productoElaborado.id">
+		                <option value=""> -- Seleccione Producto --</option>
+		                <option th:each="oProductoElaborado : ${listaProductos}" th:value="${oProductoElaborado.id}"
+		                    th:text="${oProductoElaborado.producto.nombre} + ', ' + ${oProductoElaborado.presentacion.nombre}"
+		                    th:selected="${oProductoElaborado.id == productoElaborado.id}">
+		
+		                </option>
+		            </Select>
+		        </div>
+		        
+		        <div class="form-group">
+					<label for="cantidad">Cantidad</label>
+					<div>
+						<input class="form-control" type="number" id="cantidad" name="cantidad">
+					</div>
+				</div>
+				<div class="form-group">
+		            <button  class="btn btn-primary" type="submit">Guardar</button>
+		            <a class="btn btn-secondary" th:href="@{/elaboracion}" role="button">Cancelar</a>
+		        </div>
+		    </form>
 		</div>
-		<div>
-            <br>
-            <button type="submit">Guardar</button>
-            <a th:href="@{/index}" role="button">Cancelar</a>
-        </div>
-    </form>
-</body>
-
+	    <script th:src="@{js/scriptBase.js}"></script>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	</body>
 </html>

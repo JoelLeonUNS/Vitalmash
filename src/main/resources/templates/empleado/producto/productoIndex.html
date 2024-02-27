@@ -2,20 +2,19 @@
 	<head th:replace="~{_frag/Base::site-head}">
 	</head>
 	<body>
-		<header th:replace="~{_frag/Base::site-header}"></header>
-		<div class="container-fluid mt-5 pt-5">
-		    <h1>Listado de Productos</h1>
-		    <div>
-		        <ul>
-		            <li><a th:href="@{/producto/nuevo}">Agregar Producto</a></li>
-		            <li><a th:href="@{/empleado}">Cerrar</a></li>
+		<header th:replace="~{_frag/Base::site-empleado-header}"></header>
+		<div class="container-fluid mt-5 p-5">
+		    <h1 class="mb-4">Listado de Productos</h1>
+		    <div class="mb-3">
+		        <ul class="list-inline">
+		            <li class="list-inline-item"><a class="btn btn-primary"  th:href="@{/producto/nuevo}">Agregar Producto</a></li>
+		            <li class="list-inline-item"><a class="btn btn-secondary" th:href="@{/empleado}">Cerrar</a></li>
 		        </ul>
 		    </div>
-		    
-		    <div>
+		    <div class="table-responsive">
 		        <h2>Productos</h2>
-		        <table id="listadoProductos" border="1">
-		            <thead>
+		        <table id="listadoProductos" class="table table-bordered">
+		            <thead class="thead-dark">
 		                <tr>
 		                    <td>Nombre</td>
 		                    <td>Descripción</td>
@@ -40,5 +39,9 @@
 		        </table>
 		    </div>
 		</div>
+		<script th:src="@{js/scriptBase.js}"></script>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	</body>
 </html>

@@ -1,55 +1,45 @@
-<html xmlns:th="http://www.thymeleaf.org">
-	<head>
-	<title>Ejemplo Spring Boot - JPA</title>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{_frag/Base::site-head}">
 	</head>
 	<body>
-		<h1>Listado de Docentes</h1>
-		<div>
-			<ul>
-				<li><a th:href="@{/docente/nuevo} ">Agregar Docente</a></li>
-				<li><a th:href="@{/}">Cerrar</a></li>
-			</ul>
+		<header th:replace="~{_frag/Base::site-cliente-header}"></header>
+		<div class="container-fluid mt-5 p-5">
+			<h1 class="mt-5 mb-4">Carrito de compras</h1>
+			<div class="d-flex justify-content-between mb-4">
+				<ul class="list-inline">
+					<li class="list-inline-item"><a class="btn btn-primary" th:href="@{/pedido/nuevo} ">Agregar Pedido</a></li>
+					<li class="list-inline-item"><a class="btn btn-secondary" th:href="@{/cliente}">Cerrar</a></li>
+				</ul>
+			</div>
+			<div class="table-responsive">
+				<table id="listadoPedidos" class="table table-bordered">
+					<thead class="thead-dark">
+						<tr>
+							<td>Producto</td>
+							<td>Cantidad</td>
+							<td>Editar</td>
+							<td>Eliminar</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="pedido : ${listaPedidos}">
+							<td
+								th:text="${pedido.idProductoElaborado.producto.nombre + ' ' + pedido.idProductoElaborado.presentacion.nombre} ">
+								Producto</td>
+							<td th:text="${pedido.cantidad} ">Cantidad</td>
+							<td><a class="btn btn-primary" th:href="@{/pedido/editar/} + ${pedido.id_numero} ">
+									Editar</a></td>
+							<td><a  class="btn btn-danger" th:href="@{/pedido/eliminar/} + ${pedido.id_numero}">
+									Eliminar</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
-		<div>
-		<table id="listadoDocente" border="1">
-		<thead>
-			<tr>
-				<td>Apellidos</td>
-				<td>Nombres</td>
-				<td>DNI</td>
-				<td>Celular</td>
-				<td>eMail</td>
-				<td>Especialidad</td>
-				<td>Fecha Ingreso</td>
-				<td>Editar</td>
-				<td>Eliminar</td>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="docente : ${listaDocentes}">
-				<td th:text="${docente.apellidos} ">Apellidos</td>
-				<td th:text="$ {docente. nombres} ">Nombres</td>
-				<td th:text="${docente.dni]">DNI</td>
-				<td th:text="${docente.celular}">Celular</td>
-				<td th:text="$ {docente.eMail}">eMail</td>
-				<td th:text="${docente. especialidad}">Especialidad</td>
-				<td th:text="$ {#calendars. format (
-				docente. fechaIngreso, 'dd/MM/yyyy') } ">
-				Fecha Ingreso</td>
-				<td><a th:href="@{/docente/editar/}+${docente.id] ">
-				Editar</a></td>
-				<td><a th:href="@{/docente/eliminar/+${docente.id]">
-				Eliminar</a></td>
-			</tr>
-		</tbody>
-		</table>
-		</div>
-		<div>
-		<ul>
-			<li><a th:href="@{/docente/nuevo} ">Agregar Docente</a></li>
-			<li><a th:href="@{/}">Cerrar</a></li>
-		</ul>
-		</div>
+		<script th:src="@{js/scriptBase.js}"></script>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	</body>
 </html>
-

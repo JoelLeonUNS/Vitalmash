@@ -23,4 +23,8 @@ public class Usuario {
 	@NotBlank(message = "El password no debe estar en blanco") 
 	private String clave;	
 	
+	@Column(nullable = false)
+	@NotBlank(message = "El rol no debe estar en blanco") 
+	private String rol;	
+	
 }

@@ -17,16 +17,16 @@
 			            <div class="row justify-content-center">
 			                <div class="col-md-8">
 			                    <h2 class="text-center mb-4">Iniciar Sesión</h2>
-			                    <form th:object="${usuario}" th:action="@{/login}" th:method="post">
+			                    <form th:action="@{/login}" th:method="post">
 			                        <div class="form-group">
 			                            <label for="usuario-login">Nombre de Usuario</label>
 			                            <input type="text" class="form-control" id="usuario-login" placeholder="Ingrese su nombre de usuario"
-			                            name="nombreUsuario">
+			                            name="username">
 			                        </div>
 			                        <div class="form-group">
 			                            <label for="clave-login">Contraseña</label>
 			                            <input type="password" class="form-control" id="clave-login" placeholder="Ingrese su contraseña"
-			                            name="clave">
+			                            name="password">
 			                        </div>
 			                        <div th:if="${error}" class="alert alert-danger">
 									    <span th:text="${error}"></span> 

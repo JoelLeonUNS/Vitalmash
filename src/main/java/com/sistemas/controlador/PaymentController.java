@@ -21,11 +21,16 @@ public class PaymentController {
 	@Autowired
 	PaymentService paymentService;
 	@Autowired private PedidoDetalleServiceImpl pedidoDetalleService;
+	@Autowired private PedidoController pedidoController;
 	
 	@PostMapping("/paymentintent")
 	private String payment(Model modelo, @RequestParam String precioTotalInput, @RequestParam String nombre, @RequestParam String tarjeta,
 			@RequestParam String cvc, @RequestParam String cp,
 			@RequestParam String vencimiento) throws StripeException {
+		
+		modelo.addAttribute("listaPedidos", pedidoDetalleService.listarTodos());
+		
+				
 		PaymentIntentDto paymentIntentDto = new PaymentIntentDto();
 		paymentIntentDto.setDescripcion("Producto");
 		paymentIntentDto.setPrecio(Integer.parseInt(precioTotalInput.replaceAll("\\..*$", "")));
@@ -38,8 +43,11 @@ public class PaymentController {
 				
 		PaymentIntent paymentIntent = paymentService.paymentIntent(paymentIntentDto);
 		paymentIntent = paymentService.confirmar(paymentIntent.getId());
+		
+		pedidoController.almacenarPedido();
+
 				
-		modelo.addAttribute("listaPedidos", pedidoDetalleService.listarTodos());
+		
 		
 		return "cliente/pedido/pedido";
 	}

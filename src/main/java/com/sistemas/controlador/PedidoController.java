@@ -1,5 +1,7 @@
 package com.sistemas.controlador;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,9 +30,11 @@ public class PedidoController {
 	@Autowired private ProductoElaboradoServiceImpl productoElaboradoService;
 	@Autowired private ClienteServiceImpl clienteService;
 	private Pedido pedido;
+	private PedidoDetalle pedidoDet;
 	
 	public PedidoController() {
 		this.pedido = new Pedido();
+		this.pedidoDet = new PedidoDetalle();
 	}
 	
 	@ModelAttribute("pedido")
@@ -45,8 +49,12 @@ public class PedidoController {
 	}
 	@GetMapping("/nuevo")
 	public String pedidoNuevoForm(Model model) {
-		pedido.setClientes(clienteService.buscar((long) 1));
-		pedido.setPagado(false);
+		Pedido nuevoPedido = new Pedido();
+		nuevoPedido.setClientes(clienteService.buscar((long) 1));
+		nuevoPedido.setPagado(false);
+		
+		this.pedido = nuevoPedido;
+		
 		//pedido = pedidoService.agregar(pedido);
 		model.addAttribute("producto", new ProductoElaborado());
 		model.addAttribute("listaProductos", productoElaboradoService.listarTodos());
@@ -62,6 +70,8 @@ public class PedidoController {
 		pedidoDetalle.setIdProductoElaborado(productoElaboradoService.buscar(id));
 		pedidoDetalle.setCantidad(cantidad);
 		
+		this.pedidoDet = pedidoDetalle;
+		
 		//pedidoDetalleService.agregar(pedidoDetalle);
 		modelo.addAttribute("listaPedidos", pedidoDetalleService.listarTodos());
 		modelo.addAttribute("producto", pedidoDetalle.getIdProductoElaborado());
@@ -69,6 +79,13 @@ public class PedidoController {
 		
 		
 		return "cliente/pedido/pago";
+	}
+	
+	public void almacenarPedido() {
+		pedido.setPagado(true);
+		pedido.setFecha(new  Date());
+		pedidoService.agregar(pedido);
+		pedidoDetalleService.agregar(pedidoDet);
 	}
 	
 	

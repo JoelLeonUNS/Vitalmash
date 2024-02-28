@@ -74,8 +74,8 @@ public class PedidoController {
 	
 	@PostMapping("/verificar")
 	public String procesarPago(Model model) {
-		
-		return "cliente/pedido/pago";
+		model.addAttribute("listaPedidos", pedidoDetalleService.listarTodos());
+		return "cliente/pedido/pedido";
 	}
 	
 	

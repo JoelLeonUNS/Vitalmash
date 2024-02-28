@@ -16,4 +16,10 @@ public class PaymentIntentDto {
 	private String descripcion;
 	private int precio;
 	private Moneda moneda;
+	private String numeroTarjeta;
+    private String fechaVencimiento;
+    private String codigoCVV;
+    private String titularTarjeta;
+    private String codigoPostal;
+
 }

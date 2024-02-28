@@ -26,16 +26,12 @@
 		                </tr>
 		            </thead>
 		            <tbody>
-		                <tr th:each="producto : ${listaProductos}">
-		                    <td th:text="${producto.nombre}">Nombre</td>
-		                    <td th:text="${producto.descripcion}">Descripción</td>
-		                    <td th:text="${producto.categoria.nombre}">Categoría</td>
-		                    <td >Precio</td>
-		                    <td >Stock</td>
-		                    <!-- Falta corregir esto
+		                <tr th:each="producto : ${listaProductosElaborados}">
+		                    <td th:text="${producto.producto.nombre}">Nombre</td>
+		                    <td th:text="${producto.producto.descripcion}">Descripción</td>
+		                    <td th:text="${producto.producto.categoria.nombre}">Categoría</td>
 		                    <td th:text="${producto.precio}">Precio</td>
 		                    <td th:text="${producto.stock}">Stock</td>
-		                    -->
 		                    <td><a th:href="@{/productos/editar/}+${producto.id}">Editar</a></td>
 		                    <td><a th:href="@{/productos/eliminar/}+${producto.id}">Eliminar</a></td>
 		                </tr>

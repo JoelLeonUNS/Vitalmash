@@ -25,7 +25,7 @@ public class LoginController {
         if(usuario != null) {
            model.addAttribute("usuario", usuario);
            String rol = usuario.getRol().toLowerCase();
-           return "redirect:/" + rol + "/" + usuario.getId();
+           return "redirect:/" + rol;
         }
         
         model.addAttribute("error", "Usuario o clave incorrecto!");

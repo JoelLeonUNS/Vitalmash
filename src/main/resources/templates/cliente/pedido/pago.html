@@ -1,163 +1,165 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
-<head>
-	<title>Tu Título</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-	<style>
-		.modal-content {
-			width: 300px;
-		}
-	</style>
-</head>
-
-<body>
-	<div class="container mt-3">
-		<div class="card p-3" style="width: 28rem;">
-			<img src="" alt="">
-			<div class="card-body mx-auto">
-				<h5 class="card-title" id="nombreProducto" th:text="${producto.producto.nombre}"></h5>
-				<p class="card-text" th:text="${producto.producto.descripcion}"></p>
-				<p><b>Precio: </b></p>
-				<p id="precioTotal" th:text="${producto.precio} * ${cantidad}"></p>
-			</div>
-			<div class="formulario-pago mx-auto" style="width: 19rem;">
-				<form id="formulario-pago" class="form-horizontal" th:action="@{/stripe/paymentintent}" method="post">
-					<script src="https://js.stripe.com/v3/"></script>
-					<script>
-						Stripe.publicKey = 'pk_test_51Onw2VBnLyfo0KN5xtxVCOQ55pXET7XjiVpNeOlggUPgwD92IKm5xvzCzrPzufNFozhr1PFDM4OnxcxV9R487l5j00t8wf2xke'; // Reemplazar con tu clave pública real
-					</script>
-					
-					<div class="form-group">
-						<label for="nombre" class="col-sm-12 control-label">Nombre:</label>
-						<div class="col-sm-12">
-							<input type="text" class="form-control" id="nombre" name="nombre" required>
-						</div>
-					</div>
-					
-					
-					<div class="form-group">
-						<div class="col-sm-12">
-							<input type="hidden" class="form-control" id="precioTotalInput" name="precioTotalInput" th:value="${producto.precio} * ${cantidad}">
-						</div>
-					</div>
-					
-					
-					
-					<div class="form-group">
-						<label for="tarjeta" class="col-sm-12 control-label">Número de tarjeta:</label>
-						<div class="col-sm-12">
-							<input type="text" class="form-control" id="tarjeta" name="tarjeta" required>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="vencimiento" class="col-sm-12 control-label">Vencimiento:</label>
-						<div class="col-sm-12">
-							<input type="text" class="form-control" id="vencimiento" name="vencimiento" required>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="cvc" class="col-sm-12 control-label">CVC:</label>
-						<div class="col-sm-12">
-							<input type="text" class="form-control" id="cvc" name="cvc" required>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="cp" class="col-sm-12 control-label">Código postal:</label>
-						<div class="col-sm-12">
-							<input type="text" class="form-control" id="cp" name="cp" required>
-						</div>
-					</div>
-					<div class="card-body text-center">
-						<button type="submit" class="btn btn-primary">Confirmar
-							Pago</button>
-						<button type="button" class="btn btn-secondary" onclick="cancelarPago()">Cancelar</button>
-					</div>
-					<input type="hidden" name="stripeToken" id="stripeToken">
-
-				</form>
-			</div>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{_frag/Base::site-head}">
+		<style>
+			.modal-content {
+					width: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<header th:replace="~{_frag/Base::site-empleado-header}"></header>
+		<div class="container-fluid mt-5 p-5">
+			<div class="row">
+		        <div class="col-md-6">
+		            <div class="card p-3">
+		                <i class="far fa-credit-card"></i>
+		                <div class="card-body">
+		                    <h5 class="card-title" id="nombreProducto" th:text="${producto.producto.nombre}"></h5>
+		                    <p class="card-text" th:text="${producto.producto.descripcion}"></p>
+		                    <p><b>Precio: </b></p>
+		                    <p id="precioTotal" th:text="${producto.precio} * ${cantidad}"></p>
+		                </div>
+		                <div class="formulario-pago">
+		                    <form id="formulario-pago" class="form-horizontal" th:action="@{/stripe/paymentintent}" method="post">
+		                        <script src="https://js.stripe.com/v3/"></script>
+		                        <script>
+		                            Stripe.publicKey = 'pk_test_51Onw2VBnLyfo0KN5xtxVCOQ55pXET7XjiVpNeOlggUPgwD92IKm5xvzCzrPzufNFozhr1PFDM4OnxcxV9R487l5j00t8wf2xke'; // Reemplazar con tu clave pública real
+		                        </script>
+		                        <div class="form-group">
+		                            <label for="nombre" class="col-sm-12 control-label">Nombre</label>
+		                            <div class="col-sm-12">
+		                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+		                            </div>
+		                        </div>
+		                        <div class="form-group">
+		                            <div class="col-sm-12">
+		                                <input type="hidden" class="form-control" id="precioTotalInput" name="precioTotalInput" th:value="${producto.precio} * ${cantidad}">
+		                            </div>
+		                        </div>
+		                        <div class="row">
+			                        <div class="col-md-6">
+				                        <div class="form-group">
+				                            <label for="tarjeta" class="col-sm-12 control-label">Número de tarjeta</label>
+				                            <div class="col-sm-12">
+				                                <input type="text" class="form-control" id="tarjeta" name="tarjeta" required>
+				                            </div>
+				                        </div>
+				                        <div class="form-group">
+				                            <label for="vencimiento" class="col-sm-12 control-label">Vencimiento</label>
+				                            <div class="col-sm-12">
+				                                <input type="text" class="form-control" id="vencimiento" name="vencimiento" required>
+				                            </div>
+				                        </div>
+			                        </div>
+			                        <div class="col-md-6">
+				                        <div class="form-group">
+				                            <label for="cvc" class="col-sm-12 control-label">CVC</label>
+				                            <div class="col-sm-12">
+				                                <input type="text" class="form-control" id="cvc" name="cvc" required>
+				                            </div>
+				                        </div>
+				                        <div class="form-group">
+				                            <label for="cp" class="col-sm-12 control-label">Código postal</label>
+				                            <div class="col-sm-12">
+				                                <input type="text" class="form-control" id="cp" name="cp" required>
+				                            </div>
+				                        </div>
+			                        </div>
+		                        </div>
+		                        <div class="card-body">
+		                            <button type="submit" class="btn btn-primary">Confirmar Pago</button>
+		                            <button type="button" class="btn btn-secondary" onclick="cancelarPago()">Cancelar</button>
+		                        </div>
+		                        <input type="hidden" name="stripeToken" id="stripeToken">
+		                    </form>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="col-md-6">
+		            <div class="text-left">
+		                <h2>Mensaje de Felicitación</h2>
+		                <p>🎉 ¡Qué emoción verte eligiendo nuestras bebidas probióticas para cuidar tu salud! 🥤💪 Saber que has optado por opciones saludables nos llena de alegría y nos inspira a seguir creando productos que contribuyan a tu bienestar. En Vitalmash, estamos encantados de ser parte de tu viaje hacia un estilo de vida más saludable. 🌱 ¡Sigue adelante con esa maravillosa elección y cuenta con nosotros en tu camino hacia un mejor tú! 😊👍</p>
+		                <img th:src="@{../img/pago.jpg}" alt="Mensaje de felicitación" class="img-fluid">
+		            </div>
+		        </div>
+		    </div>
 		</div>
-
-	</div>
-	<script>
-		var stripe = Stripe(Stripe.publicKey);
-		var elements = stripe.elements();
-
-		var cardNumber = elements.create('cardNumber', {
-			style: {
-				base: {
-					fontSize: '16px',
-					color: '#424770',
-					fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-					fontSmoothing: 'antialiased',
-					':focus': {
-						color: '#55598c',
-					}
-				},
-			}
-		});
-		cardNumber.mount('#tarjeta');
-
-		var cardExpiry = elements.create('cardExpiry', {
-			style: {
-				base: {
-					fontSize: '16px',
-					color: '#424770',
-					fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-					fontSmoothing: 'antialiased',
-					':focus': {
-						color: '#55598c',
-					}
-				},
-			}
-		});
-		cardExpiry.mount('#vencimiento');
-
-		var cardCvc = elements.create('cardCvc', {
-			style: {
-				base: {
-					fontSize: '16px',
-					color: '#424770',
-					fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-					fontSmoothing: 'antialiased',
-					':focus': {
-						color: '#55598c',
-					}
-				},
-			}
-		});
-		cardCvc.mount('#cvc');
-
-		var form = document.getElementById('formulario-pago');
-		form.addEventListener('submit', function (event) {
-			event.preventDefault();
-			stripe.createToken(cardNumber).then(function (result) {
-				if (result.error) {
-					// Manejar el error
-					console.log(result.error.message);
-				} else {
-					// Enviar el token a tu servidor
-					var stripeToken = result.token.id;
-					var hiddenInput = document.createElement('input');
-					hiddenInput.type = 'hidden';
-					hiddenInput.name = 'stripeToken';
-					hiddenInput.value = stripeToken;
-					form.appendChild(hiddenInput);
-					form.submit();
+		<script>
+			var stripe = Stripe(Stripe.publicKey);
+			var elements = stripe.elements();
+	
+			var cardNumber = elements.create('cardNumber', {
+				style: {
+					base: {
+						fontSize: '16px',
+						color: '#424770',
+						fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+						fontSmoothing: 'antialiased',
+						':focus': {
+							color: '#55598c',
+						}
+					},
 				}
 			});
-		});
-
+			cardNumber.mount('#tarjeta');
+	
+			var cardExpiry = elements.create('cardExpiry', {
+				style: {
+					base: {
+						fontSize: '16px',
+						color: '#424770',
+						fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+						fontSmoothing: 'antialiased',
+						':focus': {
+							color: '#55598c',
+						}
+					},
+				}
+			});
+			cardExpiry.mount('#vencimiento');
+	
+			var cardCvc = elements.create('cardCvc', {
+				style: {
+					base: {
+						fontSize: '16px',
+						color: '#424770',
+						fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+						fontSmoothing: 'antialiased',
+						':focus': {
+							color: '#55598c',
+						}
+					},
+				}
+			});
+			cardCvc.mount('#cvc');
+	
+			var form = document.getElementById('formulario-pago');
+			form.addEventListener('submit', function (event) {
+				event.preventDefault();
+				stripe.createToken(cardNumber).then(function (result) {
+					if (result.error) {
+						// Manejar el error
+						console.log(result.error.message);
+					} else {
+						// Enviar el token a tu servidor
+						var stripeToken = result.token.id;
+						var hiddenInput = document.createElement('input');
+						hiddenInput.type = 'hidden';
+						hiddenInput.name = 'stripeToken';
+						hiddenInput.value = stripeToken;
+						form.appendChild(hiddenInput);
+						form.submit();
+					}
+				});
+			});
+	
+		</script>
+	</body>
+	<script>
+		function cancelarPago() {
+			document.getElementById("formulario-pago").action = "/stripe/cancelar";
+			document.getElementById("formulario-pago").submit();
+		}
 	</script>
-
-</body>
-<script>
-	function cancelarPago() {
-		document.getElementById("formulario-pago").action = "/stripe/cancelar";
-		document.getElementById("formulario-pago").submit();
-	}
-
-</script>
-
 </html>

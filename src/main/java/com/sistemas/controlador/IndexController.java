@@ -21,13 +21,7 @@ public class IndexController {
     public String empleadoIndex() {
         return "empleado/empleadoIndex";
     }
-    
-    @PostMapping("/cliente")
-    public String clientePost() {
-        // Manejo de la solicitud POST para /cliente
-        return "cliente/clienteIndex";
-    }
-	
+
 	@GetMapping("/login")
 	public String login() {
 		return "publico/login";

@@ -46,9 +46,6 @@ public class PaymentController {
 		
 		pedidoController.almacenarPedido();
 
-				
-		
-		
 		return "cliente/pedido/pedido";
 	}
 	
